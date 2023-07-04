@@ -21,8 +21,11 @@ Faker.seed(42)
 num_records = 100000
 
 for _ in range(num_records):
-    name = fake.name()
-    email = fake.email()
+    first = fake.first_name()
+    last = fake.last_name()
+    name = f"{first} {last}"
+    domain = fake.domain_name()
+    email = f"{first}.{last}@{domain}"
     job = fake.job()
     db_cursor.execute('INSERT INTO people (name, email, job) VALUES (?,?,?)', (name,email,job))
 
